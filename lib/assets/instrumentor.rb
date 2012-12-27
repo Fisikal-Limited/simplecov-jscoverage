@@ -19,6 +19,8 @@ module SimplecovJscoverage
       def evaluate(context, locals, &block)
         return data unless SimplecovJscoverage.should_instrument?(@file)
         
+        report_file!
+        
         # digest the file path
         digest = Digest::SHA2.hexdigest(@file).to_s
 
@@ -50,8 +52,7 @@ module SimplecovJscoverage
           _$jscoverage['file_paths'] = _$jscoverage['file_paths'] || {};
           _$jscoverage['file_paths'][#{ source_file_path.inspect }] = #{ @file.inspect };
         "
-      end
-    
+      end    
     end
     
   end

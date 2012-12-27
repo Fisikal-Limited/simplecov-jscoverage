@@ -62,10 +62,10 @@ module SimplecovJscoverage
     
     #  Injects instruments to postprocess JS files.
     #
-    def inject_instruments!
-      Rails.application.assets.register_postprocessor 'application/javascript', SimplecovJscoverage::Assets::Instrumentor
-    end
-    
+    def inject_instruments!(app = nil)
+      app ||= Rails.application
+      app.assets.register_postprocessor 'application/javascript', SimplecovJscoverage::Assets::Instrumentor
+    end    
   end
   
 end
