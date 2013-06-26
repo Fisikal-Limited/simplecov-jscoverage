@@ -26,7 +26,7 @@ module SimplecovJscoverage
           real_filename = inverted_path_map[filename] || filename
           SimpleCov::SourceFile.new(real_filename, coverage).tap do |source_file|
             source_file.filename = filename
-          end
+          end if File.exists?(real_filename)
         end.compact.sort_by(&:filename))
 
         filter!
