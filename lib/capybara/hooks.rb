@@ -62,7 +62,7 @@ module SimplecovJscoverage
         if result != nil
           # we have to shift all lines up by 1. Why? because jscoverage messes up with line numbers a bit
           result.inject({}) do |memo, (file, report)|
-            file == 'file_paths' ? memo : memo.merge(file => (report || [])[1..-1])
+            file == 'file_paths' ? memo.merge(file => report) : memo.merge(file => (report || [])[1..-1])
           end
         else
           {}
