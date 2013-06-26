@@ -60,20 +60,12 @@ module SimplecovJscoverage
         result = page.evaluate_script("window._$jscoverage") rescue nil
         
         if result != nil
-          # we have to shift all lines up by 2. Why? because jscoverage messes up with line numbers a bit
-          result.each do |file, report|
-            next if file == 'file_paths'
-            # 
-            (0..report.size - 2).each do |loc|
-              report[loc] = report[loc + 1]
-            end
-            
-            report.delete_at(report.size - 1)
+          # we have to shift all lines up by 1. Why? because jscoverage messes up with line numbers a bit
+          result.inject({}) do |memo, (file, report)|
+            file == 'file_paths' ? memo : memo.merge(file => report[1..-1])
           end
-          
-          return result
         else
-          return {}
+          {}
         end
       end
     
