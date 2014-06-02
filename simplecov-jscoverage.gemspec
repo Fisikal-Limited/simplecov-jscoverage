@@ -40,7 +40,6 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<poltergeist>, [">= 0"])
     else
       s.add_dependency(%q<shoulda>, [">= 0"])
-      s.add_dependency(%q<rails>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_dependency(%q<rails>, [">= 3.1.0"])
@@ -51,7 +50,6 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<shoulda>, [">= 0"])
-    s.add_dependency(%q<rails>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
     s.add_dependency(%q<rails>, [">= 3.1.0"])
