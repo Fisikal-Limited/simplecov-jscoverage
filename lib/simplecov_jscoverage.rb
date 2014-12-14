@@ -51,6 +51,7 @@ module SimplecovJscoverage
     #  Returns true if the file should be instrumented.
     #
     def should_instrument?(path)
+      return false if self.config.nil?
       self.instrumentable_filters.all? { |filter| filter[path] }
     end
     
